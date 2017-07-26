@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'better_errors', '~> 2.1', '>= 2.1.1'
+gem 'binding_of_caller', '~> 0.7.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
