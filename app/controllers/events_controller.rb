@@ -14,6 +14,31 @@ class EventsController < ApplicationController
 		  end
 	end
 
+	def show
+		@event = Event.find(params[:id])
+	end
+
+	def index
+		@events = Event.all
+	end
+
+	def edit
+		@event = Event.find(params[:id])
+	end
+
+	def update
+		@event = Event.find(params[:id])
+		if @event.update(event_params)
+			flash[:notice] = "Course updated"
+			redirect_to @event
+		else
+			flash.now[:alert] = "Something went wrong"
+			render "edit"
+		end
+	end
+
+
+
 	private
 	def event_params
 		params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
