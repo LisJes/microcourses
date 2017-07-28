@@ -19,6 +19,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'binding_of_caller', '~> 0.7.2'
+gem 'awesome_print', '~> 1.8'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+# gem 'fontawesome-rails', '~> 4.0', '>= 4.0.3.2'
+gem 'font-awesome-sass', '~> 4.5'
+gem 'activesupport', '~> 5.1', '>= 5.1.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

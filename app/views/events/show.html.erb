@@ -1,3 +1,5 @@
+<% provide(:title, @event.title) %>
+
 <h1><%= @event.title %></h1>
 
  <% if flash[:notice] %>
@@ -6,8 +8,11 @@
 
 <div>
   <p><%= @event.description %></p>
-  <p><%= @event.start_date %></p>
-  <p><%= @event.end_date %></p>
+  <p><%= time_format(@event.start_date) %></p>
+  <p><%= time_format(@event.end_date) %></p>
   <p><%= @event.venue %></p>
   <p><%= @event.location %></p>
 </div>
+
+<P><%= link_to "Edit course", edit_event_path(@event)%> | <%= link_to "Delete course", event_path(@event), method: :delete, data: {confirm: "Are you sure?"} %>
+</P>
