@@ -1,8 +1,7 @@
-<% if flash[:alert] %>
-    <div class="notice"><%= flash[:alert] %></div>
-  <% end %>
+<header>
+	<h1>New course</h1>
+</header>
 
-<h1>New course</h1>
 
 <%= render "form", event: @event %>
 <!-- Render the partial for the create / edit course form. Would as well work with just rendering "form" -->

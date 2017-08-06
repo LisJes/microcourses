@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
 
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  # LIJ: Require login, but not for just viewing the home page or the course details, only for other commands listed here as create, edit, delete
+  before_action :authorize_owner!, only: [:edit, :update, :destroy]
+  # LIJ: Make sure that only the organizer can edit or delete his own courses
+  
   def index
     @events = Event.all
   end
@@ -14,6 +19,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.organizer = current_user
+
       if @event.save
 		 flash[:notice] = "Course created!"
 		 redirect_to @event
@@ -54,4 +61,11 @@ class EventsController < ApplicationController
 		  params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
 	  end
 	
+    def authorize_owner!
+      authenticate_user!
+      unless @event.organizer == current_user
+        flash[:alert] = "You do not have the permission to #{action_name} the #{@event.title.upcase}"
+        redirect_to events_path
+      end
+    end
 end

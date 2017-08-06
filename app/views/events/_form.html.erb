@@ -1,50 +1,23 @@
 <!-- start with an underscore and Rails knows it's a partial - use partials as template to be rendered in any of the view files. In this case: The forms used to create and edit courses are the same. Create a partial to render them in both html files and DRY :)-->
 
-<% if @event.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@event.errors.count, "error")%> prohibited this course from being saved: </h2>
-    <ul>
-    	<% @event.errors.full_messages.each do |message| %>
-    	<li><%= message %></li>
-    	<% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for(@event) do |f| %>
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		
+<%= simple_form_for(event) do |f| %>
 <!-- note: without the equal sign, code is evaluated, but not rendered in browser -->
-<!-- note: add all the input fields necessary to create a new course as well as their specification -->
-	<div>
-	  <%= f.label :title %>
-	  <%= f.text_field :title %>
-	</div>
-
-	<div>
-	  <%= f.label :description %>
-	  <%= f.text_area :description %>
-	</div>
-
-	<div>
-	  <%= f.label :start_date %>
-	  <%= f.datetime_select(:start_date, order: [:day, :month, :year], start_year: Date.current.year, ampm: true, prompt: true) %>
-	</div>
-
-	<div>
-	  <%= f.label :end_date %>
-	  <%= f.datetime_select(:end_date, order: [:day, :month, :year], start_year: Date.current.year, ampm: true, prompt: true) %>
-	</div>
-
-	<div>
-	  <%= f.label :venue %>
-	  <%= f.text_field :venue %>
-	</div>
-
-	<div>
-	  <%= f.label :location %>
-	  <%= f.text_field :location %>
-	</div>
-
-	<%= f.submit %>
+<!-- note: add all the input fields necessary to create a new course as well as their specification using simple_forms -->
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :start_date, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year]%>
+  <%= f.input :end_date, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year]%>
+  <%= f.input :venue %>
+  <%= f.input :location %>
+  <%= f.button :submit, 'Submit!', class: "btn btn-primary" %>
 	<!-- submit creates the option to actually submit the entries in the form rendered -->
 
 <% end %>
+
+<p><%= link_to "Back", events_path%></p>
+
+	</div>
+</div>
