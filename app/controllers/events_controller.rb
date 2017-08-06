@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # LIJ: Make sure that only the organizer can edit or delete his own courses
   
   def index
-    @events = Event.all
+    @events = Event.order(created_at: :desc)
   end
 
   def show
