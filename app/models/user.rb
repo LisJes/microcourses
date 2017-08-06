@@ -6,4 +6,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  #LIJ: Wenn event.organizer aufgerufen wird, soll Username widergegeben werden
+	def to_s
+		"#{username}"
+	end
+
 end
