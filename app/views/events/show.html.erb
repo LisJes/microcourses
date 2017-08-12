@@ -5,7 +5,7 @@
 	<h1 id="show-title"><%= @event.title %></h1>
 	<ul class="actions">
 		<li><%= link_to "Edit course", edit_event_path(@event), class: "edit" %></li>
-		<li><%= link_to "Delete course", edit_event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" %></li>
+		<li><%= link_to "Delete course", event_path, method: :delete, data: {confirm: "Are you sure?"}, class: "delete" %></li>
 	</ul>
 </header>
 
@@ -25,7 +25,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="sidebar">
-			<h4 class="organizer"><%= @event.organizer.username%></h4>
+			<h4 class="organizer"><%= link_to @event.organizer.username, user_path(@event.organizer)%></h4>
 			<p>
 				<span class="event-venue"><%= @event.venue %>, <strong><%= @event.location %></strong></span>
 			</p>

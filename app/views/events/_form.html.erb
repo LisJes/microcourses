@@ -4,8 +4,8 @@
 	<div class="col-sm-8 col-sm-offset-2">
 		
 <%= simple_form_for(event) do |f| %>
-<!-- note: without the equal sign, code is evaluated, but not rendered in browser -->
-<!-- note: add all the input fields necessary to create a new course as well as their specification using simple_forms -->
+<!-- LIJ: General comment - without the equal sign, code is evaluated, but not rendered in browser -->
+<!-- LIJ: add all the input fields necessary to create a new course as well as their specification using simple_forms -->
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :start_date, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year]%>

@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # LIJ: Require login, but not for just viewing the home page or the course details, only for other commands listed here as create, edit, delete
   before_action :authorize_owner!, only: [:edit, :update, :destroy]
   # LIJ: Make sure that only the organizer can edit or delete his own courses
+  # LIJ: ???? Documentation says use before_filter, but this is only for old Ruby versions!
   
   def index
     @events = Event.order(created_at: :desc)
@@ -57,6 +58,7 @@ class EventsController < ApplicationController
         redirect_to events_path
     end
 
+    #LIJ: Why is that needed? One would think that people can only submit what is in the form ;-) BUT obviously it was an issue that people would send additional parameters, also enabling them to e.g. overwrite IDs etc => restrict the parameters that one can enter
 	  def event_params
 		  params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
 	  end
