@@ -1,9 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a learning project for a Ruby on Rails beginner to cover CRUD for events or "courses", adding users and associating them with the respective courses.
 
-Things you may want to cover:
+Things to be covered:
 
 * Ruby version
 
